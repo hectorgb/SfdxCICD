@@ -23,8 +23,10 @@ jobs:
         run: sfdx force:org:list
       - name: orgList
         run: sfdx force:org:list
-      - name: installDelta
-        run: npm install sfdx-git-delta@latest -g
+      # - name: installDelta
+      #   run: npm install sfdx-git-delta@latest -g
+      # - name: testDelta
+      #   run: sgd --to HEAD --from HEAD^ --repo . --output
       - name: testDelta
-        run: sgd --to HEAD --from HEAD^ --repo . --output .  
+        run: sfdx sgd:source:delta --to HEAD --from HEAD^ --output .
       
