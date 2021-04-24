@@ -14,7 +14,7 @@ jobs:
       - name: Setup SFDX
         uses: hectorgb/sfdx-action@v3
         with:
-          node-version: '14'
+          # node-version: '14'
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
       - name: Setup Git Delta
         uses: hectorgb/sfdx-git-delta-action@v2
