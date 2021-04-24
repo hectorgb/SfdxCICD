@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: '14'
       - name: Setup SFDX
-        uses: hectorgb/sfdx-action@v3
+        uses: hectorgb/sfdx-action@v4
         with:
           # node-version: '14'
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
