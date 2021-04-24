@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: hectorgb/pmd-action@v1
-      - uses: hectorgb/sfdx-action@@v1
+      - uses: hectorgb/sfdx-action@v1
         with:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
       - name: runPmd
