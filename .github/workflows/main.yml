@@ -21,6 +21,9 @@ jobs:
       - name: Setup Git Delta
         uses: hectorgb/sfdx-git-delta-action@v2
 
+      - name: Setup Sfdc Package Merge
+        uses: hectorgb/marge-package-action@v1
+
       - name: Setup PMD
         uses: hectorgb/pmd-action@v1
 
@@ -29,8 +32,10 @@ jobs:
 
       - name: orgList
         run: sfdx force:org:list
-        
+
       - name: testDelta
         run: sgd --to HEAD --from HEAD^ --repo . --output .
 
+      - name: testPackageMerge
+        run: smp -h
       
