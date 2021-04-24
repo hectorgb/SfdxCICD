@@ -14,6 +14,8 @@ jobs:
         run: pwd  
       - name: ls
         run: ls
+      - name: cat ruleset.xml
+        run: cat ruleset.xml
       - name: orgList
         run: sfdx force:org:list
       - name: runPmd
