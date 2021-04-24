@@ -6,15 +6,25 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: pwd
+        run: pwd  
+      - name: ls -la
+        run: ls -la
       - uses: hectorgb/pmd-action@v1
+      - name: runPmd
+        run: pmd -d ./force-app/main/default/classes -R ./ruleset.xml -f text
+      - name: pwd
+        run: pwd  
+      - name: ls -la
+        run: ls -la
       - uses: sfdx-actions/setup-sfdx@v1
+      - name: orgList
+        run: sfdx force:org:list
         with:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
       - name: pwd
         run: pwd  
       - name: ls -la
         run: ls -la
-      - name: orgList
-        run: sfdx force:org:list
-      - name: runPmd
-        run: pmd -d ./force-app/main/default/classes -R ./ruleset.xml -f text
+      
+      
