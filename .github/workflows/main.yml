@@ -11,11 +11,15 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - uses: hectorgb/sfdx-action@v1
+      - name: Setup SFDX
+        uses: hectorgb/sfdx-action@v1
         with:
           node-version: '14'
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
-      
+      - name: Setup Git Delta
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - uses: hectorgb/pmd-action@v1
       - name: runPmd
         run: pmd -d ./force-app/main/default/classes -R ./ruleset.xml -f text
@@ -25,8 +29,6 @@ jobs:
         run: sfdx force:org:list
       # - name: installDelta
       #   run: npm install sfdx-git-delta@latest -g
-      # - name: testDelta
-      #   run: sgd --to HEAD --from HEAD^ --repo . --output
       - name: testDelta
-        run: sfdx sgd:source:delta --to HEAD --from HEAD^ --output .
+        run: sgd --to HEAD --from HEAD^ --repo . --output
       
