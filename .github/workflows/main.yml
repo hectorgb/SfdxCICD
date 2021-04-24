@@ -12,8 +12,8 @@ jobs:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
       - name: pwd
         run: pwd  
-      - name: ls ./force-app/main/default/classes
-        run: ls ./force-app/main/default/classes
+      - name: ls -la
+        run: ls -la
       - name: orgList
         run: sfdx force:org:list
       - name: runPmd
