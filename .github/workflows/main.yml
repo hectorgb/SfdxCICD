@@ -11,9 +11,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - name: Setup SFDX 
+      # - name: Setup SFDX 
         # uses: hectorgb/sfdx-action@v4
-        uses: docker://hectorgonzalezbarata/sfdx-git-delta
         # with:
         #   sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
       # - name: Setup Git Delta
@@ -28,6 +27,8 @@ jobs:
       # - name: installDelta
       #   run: npm install sfdx-git-delta@latest -g
       - name: testDelta
+        uses: docker://hectorgonzalezbarata/sfdx-git-delta
+
         # run: sgd --to HEAD --from HEAD^ --repo . --output .
         run: sfdx sgd:source:delta --to HEAD --from HEAD^ --output .
 
