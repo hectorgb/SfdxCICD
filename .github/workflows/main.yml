@@ -16,5 +16,5 @@ jobs:
       - name: orgList
         run: sfdx force:org:list
       - name: testDelta
-        run: sfdx sgd:source:delta --to HEAD --from HEAD^ --output .    
+        run: sgd --to HEAD --from HEAD^ --repo . --output .  
       
