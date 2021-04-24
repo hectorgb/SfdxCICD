@@ -14,5 +14,7 @@ jobs:
       - name: runPmd
         run: pmd -d ./force-app/main/default/classes -R ./ruleset.xml -f text
       - name: orgList
-        run: sfdx force:org:list      
+        run: sfdx force:org:list
+      - name: testDelta
+        run: sfdx sgd:source:delta --to HEAD --from HEAD^ --output .    
       
