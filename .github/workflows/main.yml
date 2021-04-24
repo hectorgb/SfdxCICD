@@ -14,6 +14,12 @@ jobs:
         run: pwd  
       - name: ls
         run: ls
+      - name: cd ..
+        run: cd .. 
+      - name: pwd
+        run: pwd  
+      - name: ls
+        run: ls
       - name: cat ruleset.xml
         run: cat ruleset.xml
       - name: orgList
