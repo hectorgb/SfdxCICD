@@ -5,31 +5,32 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      image: hectorgonzalezbarata/sfdx-git-delta
     steps:
+
       - uses: actions/checkout@v1
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-      # - name: Setup SFDX 
-        # uses: hectorgb/sfdx-action@v4
-        # with:
-        #   sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
-      # - name: Setup Git Delta
-      #   uses: hectorgb/sfdx-git-delta-action@v2
-      #   with:
-      #     node-version: '14'
-      # - uses: hectorgb/pmd-action@v1
-      # - name: runPmd
-      #   run: pmd -d ./force-app/main/default/classes -R ./ruleset.xml -f text
-      # - name: orgList
-      #   run: sfdx force:org:list
-      # - name: installDelta
-      #   run: npm install sfdx-git-delta@latest -g
+
+      - name: Setup SFDX 
+        uses: hectorgb/sfdx-action@v1
+        with:
+          sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
+
+      - name: Setup Git Delta
+        uses: hectorgb/sfdx-git-delta-action@v2
+
+      - name: Setup PMD
+        uses: hectorgb/pmd-action@v1
+
+      - name: runPmd
+        run: pmd -d ./force-app/main/default/classes -R ./ruleset.xml -f text
+
+      - name: orgList
+        run: sfdx force:org:list
+        
       - name: testDelta
-      # run: sgd --to HEAD --from HEAD^ --repo . --output .
-        run: sfdx sgd:source:delta --to HEAD --from HEAD^ --output .
+        run: sgd --to HEAD --from HEAD^ --repo . --output .
 
       
