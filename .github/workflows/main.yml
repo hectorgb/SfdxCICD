@@ -20,9 +20,9 @@ jobs:
         run: pwd  
       - name: ls
         run: ls
-      - name: cat ruleset.xml
-        run: cat ruleset.xml
+      - name: cat ./ruleset.xml
+        run: cat ./ruleset.xml
       - name: orgList
         run: sfdx force:org:list
       - name: runPmd
-        run: pmd -d ./force-app/main/default/classes -R ruleset.xml -f text
+        run: pmd -d ./force-app/main/default/classes -R ./ruleset.xml-f text
