@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
@@ -48,5 +48,5 @@ jobs:
           git config --global user.email 'your-username@users.noreply.github.com'
           git add merged_packed.xml
           git commit -am "Automated report"
-          git push -u origin HEAD
+          git push
       
