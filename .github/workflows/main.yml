@@ -36,8 +36,17 @@ jobs:
       - name: testDelta
         run: sgd --to HEAD --from HEAD^ --repo . --output .
 
+      - name: cat manifest/package.xml
+        run: cat manifest/package.xml
+
+      - name: cat package/package.xml
+        run: cat package/package.xml
+
+      - name: mkdir out
+        run: mkdir out
+
       - name: testPackageMerge
-        run: smp -p manifest/package.xml -p package/package.xml -o merged_packed.xml
+        run: smp -p manifest/package.xml -p package/package.xml -o out/merged_packed.xml
       
       - name: cat merged_packed.xml
         run: cat merged_packed.xml
