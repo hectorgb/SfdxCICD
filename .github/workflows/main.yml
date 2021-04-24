@@ -18,10 +18,10 @@ jobs:
       - name: ls -la
         run: ls -la
       - uses: sfdx-actions/setup-sfdx@v1
-      - name: orgList
-        run: sfdx force:org:list
         with:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
+      - name: orgList
+        run: sfdx force:org:list
       - name: pwd
         run: pwd  
       - name: ls -la
