@@ -58,7 +58,7 @@ jobs:
         #   git add out/merged_packed.xml
         #   git commit -am "Automated report"
         #   git push -u origin HEAD
-      - uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Autocommit new package
       
