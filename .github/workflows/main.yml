@@ -13,7 +13,7 @@ jobs:
           node-version: '14'
       - name: Setup SFDX 
         # uses: hectorgb/sfdx-action@v4
-        uses: docker://hectorgonzalezbarata:sfdx-git-delta
+        uses: docker://hectorgonzalezbarata/sfdx-git-delta
         # with:
         #   sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
       # - name: Setup Git Delta
