@@ -15,6 +15,10 @@ jobs:
         run: pmd -d ./force-app/main/default/classes -R ./ruleset.xml -f text
       - name: orgList
         run: sfdx force:org:list
+      - name: orgList
+        run: sfdx force:org:list
+      - name: installDelta
+        run: npm install sfdx-git-delta@latest -g
       - name: testDelta
         run: sgd --to HEAD --from HEAD^ --repo . --output .  
       
