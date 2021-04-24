@@ -30,5 +30,5 @@ jobs:
       # - name: installDelta
       #   run: npm install sfdx-git-delta@latest -g
       - name: testDelta
-        run: sgd --to HEAD --from HEAD^ --repo . --output
+        run: sgd --to HEAD --from HEAD^ --repo . --output .
       
