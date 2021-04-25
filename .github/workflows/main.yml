@@ -18,7 +18,7 @@ jobs:
           node-version: '14'
 
       - name: Setup SFDX 
-        uses: actions/setup-sfdx@v1
+        uses: sfdx-actions/setup-sfdx@v1
         with:
           sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
 
