@@ -5,7 +5,6 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: hectorgonzalezbarata/sfdx-git-delta
     steps:
 
       - uses: actions/checkout@v2
