@@ -5,6 +5,7 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    container: hectorgonzalezbarata/sfdx-git-delta
     steps:
 
       - uses: actions/checkout@v2
@@ -16,13 +17,13 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Setup SFDX 
-        uses: sfdx-actions/setup-sfdx@v1
-        with:
-          sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
+      # - name: Setup SFDX 
+      #   uses: sfdx-actions/setup-sfdx@v1
+      #   with:
+      #     sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
 
-      - name: Setup Git Delta
-        uses: hectorgb/sfdx-git-delta-action@v2
+      # - name: Setup Git Delta
+      #   uses: hectorgb/sfdx-git-delta-action@v2
 
       - name: Setup Sfdc Package Merge
         uses: hectorgb/marge-package-action@v1
@@ -34,7 +35,7 @@ jobs:
         run: pmd -d ./force-app/main/default/classes -R ./ruleset.xml -f text
 
       - name: orgList
-        run: sfdx force:org:list
+        run: sfdx -h
 
       - name: testDelta
         run: sgd --to HEAD --from HEAD^ --repo . --output .
