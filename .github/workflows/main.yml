@@ -39,9 +39,6 @@ jobs:
       - name: testDelta
         run: sgd --to HEAD --from HEAD^ --repo . --output .
 
-      - name: mkdir out
-        run: mkdir out
-
       - name: testPackageMerge
         run: smp -p manifest/package.xml -p package/package.xml -o out/merged_packed.xml
 
