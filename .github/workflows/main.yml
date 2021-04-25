@@ -7,63 +7,50 @@ jobs:
     runs-on: ubuntu-latest
     container: hectorgonzalezbarata/sfdx-git-delta
     steps:
-      - name: Run sgd
-        run: sfdx sgd -h
 
-      # - uses: actions/checkout@v2
-      #   with:
-      #     fetch-depth: 0
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: '14'
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-      # # - name: Setup SFDX 
-      # #   uses: hectorgb/sfdx-action@v1
-      # #   with:
-      # #     sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
+      - name: Setup SFDX 
+        uses: hectorgb/sfdx-action@v1
+        with:
+          sfdx-auth-url: ${{ secrets.AUTH_SECRET }}
 
-      # - name: Setup Git Delta
-      #   uses: hectorgb/sfdx-git-delta-action@v2
+      - name: Setup Git Delta
+        uses: hectorgb/sfdx-git-delta-action@v2
 
-      # - name: Setup Sfdc Package Merge
-      #   uses: hectorgb/marge-package-action@v1
+      - name: Setup Sfdc Package Merge
+        uses: hectorgb/marge-package-action@v1
 
-      # - name: Setup PMD
-      #   uses: hectorgb/pmd-action@v1
+      - name: Setup PMD
+        uses: hectorgb/pmd-action@v1
 
-      # - name: runPmd
-      #   run: pmd -d ./force-app/main/default/classes -R ./ruleset.xml -f text
+      - name: runPmd
+        run: pmd -d ./force-app/main/default/classes -R ./ruleset.xml -f text
 
-      # # - name: orgList
-      # #   run: sfdx force:org:list
+      - name: orgList
+        run: sfdx force:org:list
 
-      # - name: testDelta
-      #   run: sgd --to HEAD --from HEAD^ --repo . --output .
+      - name: testDelta
+        run: sgd --to HEAD --from HEAD^ --repo . --output .
 
-      # - name: cat manifest/package.xml
-      #   run: cat manifest/package.xml
+      - name: mkdir out
+        run: mkdir out
 
-      # - name: cat package/package.xml
-      #   run: cat package/package.xml
+      - name: testPackageMerge
+        run: smp -p manifest/package.xml -p package/package.xml -o out/merged_packed.xml
 
-      # - name: mkdir out
-      #   run: mkdir out
-
-      # - name: testPackageMerge
-      #   run: smp -p manifest/package.xml -p package/package.xml -o out/merged_packed.xml
-      
-      # - name: cat out/merged_packed.xml
-      #   run: cat out/merged_packed.xml
-
-      # - name: commit new package
-      #   run: |
-      #     git config --global user.name 'Your Name'
-      #     git config --global user.email 'your-username@users.noreply.github.com'
-      #     git add out/merged_packed.xml
-      #     git commit -am "Automated report"
-      #     git push
-        # uses: stefanzweifel/git-auto-commit-action@v4
-        # with:
-        #   commit_message: Autocommit new package
+      - name: commit new package
+        run: |
+          git config --global user.name 'Your Name'
+          git config --global user.email 'your-username@users.noreply.github.com'
+          git add out/merged_packed.xml
+          git commit -am "Automated report"
+          git push
       
