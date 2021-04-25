@@ -2,7 +2,6 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>*</members>
-        <members>ApexClass9</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -32,6 +31,10 @@
     <types>
         <members>*</members>
         <name>StaticResource</name>
+    </types>
+    <types>
+        <members>main.yml</members>
+        <name>Workflow</name>
     </types>
     <version>51.0</version>
 </Package>
